@@ -31,8 +31,9 @@ const CAMINHO_ARQUIVO_EXPORTADO =
 // (ex: DB_PASSWORD=minha_senha node coletor.js).
 const CONFIG_BANCO = {
   host: process.env.DB_HOST || "localhost",
+  port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "eli15423", // AJUSTAR: sua senha do MySQL
+  password: process.env.DB_PASSWORD || "", // AJUSTAR: sua senha do MySQL
   database: process.env.DB_NAME || "licitacoes_tijucas",
 };
 
