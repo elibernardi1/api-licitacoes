@@ -1,0 +1,14 @@
+{
+  "name": "api-licitacoes-tijucas",
+  "version": "0.3.0",
+  "description": "Coletor + API estilo dummyjson para licitações reais de Tijucas",
+  "main": "server.js",
+  "scripts": {
+    "coletar": "node coletor.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.24.4"
+  }
+}
