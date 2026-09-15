@@ -109,7 +109,12 @@ app.get("/licitacoes", async (req, res) => {
       limit,
     });
   } catch (erro) {
-    res.status(500).json({ mensagem: "Erro ao buscar licitações", erro: erro.message });
+    console.error("Erro em /licitacoes:", erro);
+    res.status(500).json({
+      mensagem: "Erro ao buscar licitações",
+      erro: erro.message || erro.code || erro.name || String(erro),
+      codigo: erro.code || null,
+    });
   }
 });
 
@@ -129,7 +134,12 @@ app.get("/licitacoes/search", async (req, res) => {
     );
     res.json({ licitacoes: linhas.map(paraJson), total: linhas.length });
   } catch (erro) {
-    res.status(500).json({ mensagem: "Erro na busca", erro: erro.message });
+    console.error("Erro em /licitacoes/search:", erro);
+    res.status(500).json({
+      mensagem: "Erro na busca",
+      erro: erro.message || erro.code || erro.name || String(erro),
+      codigo: erro.code || null,
+    });
   }
 });
 
@@ -150,7 +160,12 @@ app.get("/licitacoes/:id", async (req, res) => {
 
     res.json(paraJson(linhas[0]));
   } catch (erro) {
-    res.status(500).json({ mensagem: "Erro ao buscar licitação", erro: erro.message });
+    console.error("Erro em /licitacoes/:id:", erro);
+    res.status(500).json({
+      mensagem: "Erro ao buscar licitação",
+      erro: erro.message || erro.code || erro.name || String(erro),
+      codigo: erro.code || null,
+    });
   }
 });
 
