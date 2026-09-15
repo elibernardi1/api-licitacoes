@@ -16,11 +16,19 @@ const CONFIG_BANCO = {
   host: process.env.DB_HOST || "localhost",
   port: process.env.DB_PORT || 3306,
   user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "eli15423", // AJUSTAR: sua senha do MySQL
+  password: process.env.DB_PASSWORD || "", // AJUSTAR: sua senha do MySQL
   database: process.env.DB_NAME || "licitacoes_tijucas",
 };
 
 const pool = mysql.createPool(CONFIG_BANCO);
+
+/**
+ * Rota raiz - redireciona quem abrir a URL base direto pra
+ * /licitacoes, em vez de dar 404.
+ */
+app.get("/", (req, res) => {
+  res.redirect("/licitacoes");
+});
 
 /**
  * Traduz uma linha do banco (snake_case) pro formato que a API
